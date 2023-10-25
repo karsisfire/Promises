@@ -1,12 +1,12 @@
 function makePayment(amount) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const isPaymentAccepted = Math.random() < 0.5; 
+        const isPaymentAccepted = Math.random() > 0.5; //I used this to represent 50% chance of being success.
   
         if (isPaymentAccepted) {
-          resolve({ message: "Payment accepted", amount });
+          resolve({ message: "Payment iz accepted", amount });
         } else {
-          reject({ message: "Payment rejected", amount });
+          reject({ message: "Payment iz rejected", amount });
         }
       }, 2000); 
     });

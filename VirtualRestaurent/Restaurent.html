@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Genshin Restaurent</title>
+  <style>
+    #container{
+      text-align: center;
+    }
+    h1{
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: rgb(0, 170, 255);
+    }
+    h2{
+      font-family: 'Times New Roman', Times, serif;
+      color: rgb(251, 3, 3);
+    }
+    button{
+      padding: 10px;
+      background-color: aqua;
+      border: none;
+      margin-top: 20px;
+    }
+    #status{
+      margin-top: 30px;
+      color: crimson;
+      font-style: italic;
+      font-size: large;
+    }
+    img{
+      width: 150px;
+      height:auto;
+      margin-top: 30px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Genshin Restaurent</h1>
+    <h2>Pick your order</h2>
+    <input type="checkbox" id="eggs" class="check">Eggs
+    <input type="checkbox" id="tofu" class="check">Tofu 
+    <input type="checkbox" id="steak" class="check">Streak
+    <br>
+    <button>Order Food</button>
+    <div id="status"></div>
+    <img src="">
+  </div>
+</body>
+<script>
+  const checkboxes = document.querySelectorAll(".check");
+  const eggs = document.querySelector("#eggs");
+  const tofu = document.querySelector("#tofu");
+  const steak = document.querySelector("#steak");
+  const button = document.querySelector("button");
+  const status = document.querySelector("#status");
+  const img = document.querySelector("img");
+  
+function process() {
+  return new Promise((resolve, reject) => {
+    status.innerText = "Your Dish is being Processed";
+    setTimeout(() => {
+      if (eggs.checked) {
+        img.src = "eggs.jpeg";
+      } else if (tofu.checked) {
+        img.src = "tofu.png";
+      } else if (steak.checked) {
+        img.src = "steak.png";
+      }
+      resolve("Your Dish is Ready");
+    }, 2000);
+  });
+}
+
+button.addEventListener("click", function () {
+  process()
+    .then((message) => {
+      status.innerText = message;
+    })
+    .catch((error) => {
+      console.error(error);
+      status.innerText = "An error occurred.";
+    });
+});
+
+</script>
+</html>
