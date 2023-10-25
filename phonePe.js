@@ -10,7 +10,7 @@ function makePayment(amount) {
         }
       }, 2000); 
     });
-  }
+}
 
   function showProcessingUI() {
     console.log("Displaying processing UI similar to PhonePe...");
